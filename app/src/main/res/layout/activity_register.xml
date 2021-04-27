@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00162C">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="374dp"
+        android:layout_height="382dp"
+        android:layout_marginTop="140dp"
+        android:backgroundTint="#EA2427"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="304dp"
+            android:layout_marginTop="82dp"
+            app:cardCornerRadius="15dp">
+
+            <TextView
+                android:id="@+id/textview5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="30dp"
+                android:text="Name"
+                android:textColor="#EA2427" />
+
+            <EditText
+                android:id="@+id/et_register_name"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="50dp"
+                android:ems="10"
+                android:inputType="text"
+                android:text="Name" />
+
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="100dp"
+                android:text="Email"
+                android:textColor="#EA2427" />
+
+            <EditText
+                android:id="@+id/et_register_email"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="120dp"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                android:text="Email" />
+
+            <TextView
+                android:id="@+id/passwors"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="170dp"
+                android:text="Password"
+                android:textColor="#EA2427" />
+
+            <EditText
+                android:id="@+id/et_register_password"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="190dp"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                android:text="Email" />
+
+
+            <Button
+                android:id="@+id/bt_register_save"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="240dp"
+                android:backgroundTint="#EA2427"
+                android:text="SAVE" />
+
+
+        </androidx.cardview.widget.CardView>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginLeft="128dp"
+        android:layout_marginTop="46dp"
+        android:elevation="@dimen/cardview_default_elevation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:backgroundTint="#EFF2F5"
+        app:cardCornerRadius="100dp"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
