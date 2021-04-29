@@ -12,37 +12,61 @@ import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.net.UnknownHostException
 
-class ViewModelComics : ViewModel(){
+class ViewModelComics : ViewModel() {
 
     val listMutableComics = MutableLiveData<List<Result>>()
-    val loading = MutableLiveData<Boolean>()
+    val firstPageLoading = MutableLiveData<Boolean>()
+    val nextPageLoading = MutableLiveData<Boolean>()
     val errorMessage = MutableLiveData<String>()
     private val repository = RepositoryApi()
+    var moreComics: Int = 0
+
 
     init {
         getAllComics()
     }
 
 
-    fun getAllComics()  = CoroutineScope(Dispatchers.IO).launch {
-    loading.postValue(true)
-    try {
-        repository.getComicsService().let { comicsResponse ->
-            listMutableComics.postValue(comicsResponse.data.results)
-            loading.postValue(false)
-
+    fun getAllComics() = CoroutineScope(Dispatchers.IO).launch {
+        firstPageLoading.postValue(true)
+        try {
+            repository.getComicsService().let { comicsResponse ->
+                updateMoreComics(comicsResponse)
+                listMutableComics.postValue(comicsResponse.data.results)
+                firstPageLoading.postValue(false)
+            }
+        } catch (error: Throwable) {
+            firstPageLoading.postValue(false)
+            handleError(error)
         }
-    } catch (error: Throwable){
-        loading.postValue(false)
-        handleError(error)
     }
-    }
+
 
     private fun handleError(error: Throwable) {
-        when(error){
+        when (error) {
             is HttpException -> errorMessage.postValue("Erro de conexão código: ${error.code()}")
             is UnknownHostException -> errorMessage.postValue("Verifique sua conexão")
         }
     }
+
+    private fun updateMoreComics(comics: Comics) {
+        moreComics = comics.data.offset.toInt().plus(18)
+    }
+
+    fun requestMoreComics() = CoroutineScope(IO).launch {
+        nextPageLoading.postValue(true)
+        try {
+            repository.getComicsService(moreComics).let { comicsResponse ->
+                updateMoreComics(comicsResponse)
+                listMutableComics.postValue(comicsResponse.data.results)
+                nextPageLoading.postValue(false)
+            }
+        } catch (error: Throwable) {
+            handleError(error)
+        }
+    }
+
+
+
 
 }

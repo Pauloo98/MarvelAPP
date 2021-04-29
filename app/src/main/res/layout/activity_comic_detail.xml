@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,15 +9,17 @@
     android:background="@color/fundo">
 
 
-    <ImageView
+
+
+        <ImageView
         android:id="@+id/iv_details_cover"
         android:layout_width="match_parent"
         android:layout_height="239dp"
-        android:background="@tools:sample/backgrounds/scenic"
+        android:background="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+        <ImageView
         android:id="@+id/iv_details_photo"
         android:layout_width="129dp"
         android:layout_height="202dp"
@@ -25,34 +28,35 @@
         android:layout_marginTop="68dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/splash_fundo" />
+        android:background="@color/white" />
 
-    <TextView
+        <TextView
         android:id="@+id/tv_details_title"
-        android:layout_width="367dp"
-        android:layout_height="55dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="284dp"
         android:text="TextView"
         android:textColor="@color/white"
-        android:textSize="45dp"
+        android:textSize="35dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_details_cover" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView5"
+        <TextView
+        android:id="@+id/tv_details_description"
         android:layout_width="361dp"
-        android:layout_height="194dp"
+        android:layout_height="100dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="24dp"
         android:text="TextView"
         android:textColor="@color/white"
+        android:scrollbars="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_details_title" />
 
-    <TextView
+        <TextView
         android:id="@+id/tvpublished"
         android:layout_width="78dp"
         android:layout_height="24dp"
@@ -63,9 +67,9 @@
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_details_description" />
 
-    <TextView
+        <TextView
         android:id="@+id/tv_details_published"
         android:layout_width="159dp"
         android:layout_height="24dp"
@@ -75,9 +79,9 @@
         android:text="TextView"
         android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/tvpublished"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_details_description" />
 
-    <TextView
+        <TextView
         android:id="@+id/textView8"
         android:layout_width="76dp"
         android:layout_height="18dp"
@@ -90,8 +94,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvpublished" />
 
-    <TextView
-        android:id="@+id/textView9"
+        <TextView
+        android:id="@+id/tv_details_price"
         android:layout_width="157dp"
         android:layout_height="20dp"
         android:layout_marginStart="20dp"
@@ -102,7 +106,7 @@
         app:layout_constraintStart_toEndOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/tv_details_published" />
 
-    <TextView
+        <TextView
         android:id="@+id/textView10"
         android:layout_width="76dp"
         android:layout_height="19dp"
@@ -115,7 +119,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-    <TextView
+        <TextView
         android:id="@+id/tv_details_page"
         android:layout_width="156dp"
         android:layout_height="19dp"
@@ -125,7 +129,8 @@
         android:text="TextView"
         android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_details_price" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

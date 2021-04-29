@@ -2,36 +2,55 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="100dp"
     android:layout_height="150dp"
-    app:cardCornerRadius="7dp"
+    app:cardCornerRadius="0dp"
     android:layout_marginTop="10dp"
     android:backgroundTint="@color/fundo"
     >
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+>
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="100dp"
+            android:layout_height="130dp"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/iv_card_comic"
-            android:layout_width="wrap_content"
-            android:layout_height="120dp"
-            android:layout_gravity="center_horizontal"
-            android:scaleType="centerCrop"
-            />
+            android:layout_width="95dp"
+            android:layout_height="125dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="3dp"
+            app:layout_constraintStart_toStartOf="@+id/imageView6"
+            app:layout_constraintTop_toTopOf="@+id/imageView6"
+            android:layout_marginLeft="3dp" />
 
         <TextView
             android:id="@+id/tv_card_comic_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginLeft="48dp"
+            android:autoSizeTextType="uniform"
             android:fontFamily="casual"
-            android:textStyle="bold"
             android:gravity="center"
-            android:layout_gravity="center"
             android:textColor="@android:color/white"
-            android:autoSizeTextType="uniform"/>
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

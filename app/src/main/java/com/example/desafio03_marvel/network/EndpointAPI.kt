@@ -14,7 +14,8 @@ interface EndpointAPI {
             @Query("ts") ts: String?,
             @Query("hash") hash: String?,
             @Query("apikey") apiKey: String?,
-            @Query("characters") characters: Int?
+            @Query("characters") characters: Int?,
+            @Query("limit") limit: Int?
     ) : Comics
 
 

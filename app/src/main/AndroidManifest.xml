@@ -10,6 +10,8 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Desafio03Marvel">
+        <activity android:name=".view.activity.DetailsActivity"/>
+        <activity android:name=".view.activity.PhotoActivity"/>
         <activity android:name=".view.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

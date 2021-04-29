@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.desafio03_marvel.R
 import com.example.desafio03_marvel.model.Result
 import com.example.desafio03_marvel.view.adapter.ComicAdapter
+import com.example.desafio03_marvel.view.adapter.RecycleScroll
 import com.example.desafio03_marvel.viewmodel.ViewModelComics
 
 class MainActivity : AppCompatActivity() {
@@ -20,7 +21,13 @@ class MainActivity : AppCompatActivity() {
     private var results = mutableListOf<Result>()
     val recycler by lazy { findViewById<RecyclerView>(R.id.rv_comics) }
     val viewModelComic by lazy { ViewModelProviders.of(this).get(ViewModelComics::class.java) }
-    lateinit var progressBar: ProgressBar
+    lateinit var firstProgressBar: ProgressBar
+    lateinit var nextProgressBar: ProgressBar
+    private val recyclerScrollListener by lazy {
+        RecycleScroll {
+            viewModelComic.requestMoreComics()
+        }
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,32 +36,58 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-        progressBar = findViewById(R.id.progressBar)
+        firstProgressBar = findViewById(R.id.progressBar)
+        nextProgressBar = findViewById(R.id.progressBar2)
 
-        val adapterComics = ComicAdapter(results, this)
+//        val adapterComics = ComicAdapter(results, this)
+        val adapterComics = ComicAdapter()
         recycler.adapter = adapterComics
         val layoutManager = GridLayoutManager(this, 3)
         recycler.layoutManager = layoutManager
+        recycler.addOnScrollListener(recyclerScrollListener)
 
         //COMICS*************************
-        viewModelComic.listMutableComics.observe(this, Observer {
-            it.let { itComic -> results.addAll(itComic) }
-            adapterComics.notifyDataSetChanged()
-            Log.d("Results", results.size.toString())
-        })
+//        viewModelComic.listMutableComics.observe(this, Observer {
+//            it.let { itComic -> results.addAll(itComic) }
+//            adapterComics.notifyDataSetChanged()
+//            Log.d("Results", results.size.toString())
+//        })
 
         Log.d("Results2", results.size.toString())
+
+        viewModelComic.listMutableComics.observe(this, Observer {
+            setRequestingNextPage()
+            adapterComics.addComics(it)
+        })
+
+
+
+
         //PROGRESS BAR*************************
-        viewModelComic.loading.observe(this, Observer {
+        viewModelComic.firstPageLoading.observe(this, Observer {
             if (it) {
-                progressBar.visibility = VISIBLE
+                firstProgressBar.visibility = VISIBLE
             } else {
-                progressBar.visibility = GONE
+                firstProgressBar.visibility = GONE
+            }
+        })
+
+        viewModelComic.nextPageLoading.observe(this, Observer {
+            if (it) {
+                nextProgressBar.visibility = VISIBLE
+            } else {
+                nextProgressBar.visibility = GONE
             }
         })
 
 
     }
+
+
+    private fun setRequestingNextPage() {
+        recyclerScrollListener.requesting = false
+    }
+
 
 
 }
