@@ -50,7 +50,7 @@ class ViewModelComics : ViewModel() {
     }
 
     private fun updateMoreComics(comics: Comics) {
-        moreComics = comics.data.offset.toInt().plus(18)
+        moreComics = comics.data.offset.toInt().plus(17)
     }
 
     fun requestMoreComics() = CoroutineScope(IO).launch {

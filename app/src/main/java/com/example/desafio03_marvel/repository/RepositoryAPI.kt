@@ -11,7 +11,7 @@ class RepositoryApi {
 
     val PUBLIC_KEY: String? = "6eb7e8896ec5850c52515a8a23ee97f0"
     val PRIVATE_KEY: String? = "0dd0c16fedb8a02985977eafca66b49f5e6a526f"
-    val orderBy: String? = "title"
+    val orderBy: String? = "focDate"
     val characters: Int? = 1009610
     val limit: Int? = 18
 
@@ -22,7 +22,7 @@ class RepositoryApi {
 
     private val serviceComics = RetrofitInit(url).create(service)
 
-    suspend fun getComicsService(offset : Int = 17): Comics = serviceComics.getComics(
+    suspend fun getComicsService(offset : Int = 1): Comics = serviceComics.getComics(
         offset , orderBy, ts, hash, PUBLIC_KEY, characters, limit
     )
 

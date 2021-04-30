@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         firstProgressBar = findViewById(R.id.progressBar)
         nextProgressBar = findViewById(R.id.progressBar2)
 
-//        val adapterComics = ComicAdapter(results, this)
+
         val adapterComics = ComicAdapter()
         recycler.adapter = adapterComics
         val layoutManager = GridLayoutManager(this, 3)
@@ -47,11 +47,6 @@ class MainActivity : AppCompatActivity() {
         recycler.addOnScrollListener(recyclerScrollListener)
 
         //COMICS*************************
-//        viewModelComic.listMutableComics.observe(this, Observer {
-//            it.let { itComic -> results.addAll(itComic) }
-//            adapterComics.notifyDataSetChanged()
-//            Log.d("Results", results.size.toString())
-//        })
 
         Log.d("Results2", results.size.toString())
 
