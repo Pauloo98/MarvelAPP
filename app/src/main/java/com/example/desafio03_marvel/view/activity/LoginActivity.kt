@@ -9,9 +9,11 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.desafio03_marvel.R
+//import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
 
+//    private lateinit var firebaseAuth : FirebaseAuth
     val et_email by lazy { findViewById<EditText>(R.id.et_login_email) }
     val et_password by lazy { findViewById<EditText>(R.id.et_login_email) }
     val bt_login by lazy { findViewById<Button>(R.id.bt_login) }
@@ -22,7 +24,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         emailValidation()
-        loginValidation()
+
 
 
         bt_login.setOnClickListener {
@@ -38,10 +40,6 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    private fun loginValidation(){
-        bt_login.isEnabled = false
-
-    }
 
     private fun emailValidation(){
         et_email.addTextChangedListener(object: TextWatcher {

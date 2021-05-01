@@ -69,7 +69,9 @@ class MainActivity : AppCompatActivity() {
 
         viewModelComic.nextPageLoading.observe(this, Observer {
             if (it) {
-                nextProgressBar.visibility = VISIBLE
+                if(firstProgressBar.visibility == VISIBLE){
+                    nextProgressBar.visibility = GONE
+                } else nextProgressBar.visibility = VISIBLE
             } else {
                 nextProgressBar.visibility = GONE
             }

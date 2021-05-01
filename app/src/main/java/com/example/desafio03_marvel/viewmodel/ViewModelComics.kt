@@ -6,7 +6,6 @@ import com.example.desafio03_marvel.model.Comics
 import com.example.desafio03_marvel.model.Result
 import com.example.desafio03_marvel.repository.RepositoryApi
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
@@ -27,7 +26,7 @@ class ViewModelComics : ViewModel() {
     }
 
 
-    fun getAllComics() = CoroutineScope(Dispatchers.IO).launch {
+    fun getAllComics() = CoroutineScope(IO).launch {
         firstPageLoading.postValue(true)
         try {
             repository.getComicsService().let { comicsResponse ->
@@ -65,8 +64,6 @@ class ViewModelComics : ViewModel() {
             handleError(error)
         }
     }
-
-
 
 
 }
